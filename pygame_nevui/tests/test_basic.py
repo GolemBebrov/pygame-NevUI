@@ -1,0 +1,61 @@
+import pygame
+from pygame_nevui.ui import *
+from pygame_nevui.ui.window import Window
+def run():
+    print("Test: 1; Basic_test")
+    g1 = input("Path to gif1: ")
+    m1 = input("Path to music_file1: ")
+    m2 = input("Path to music_file2: ")
+    pygame.init()
+    style1 = Style(bgcolor=(100,150,100),bordercolor=(1,2,3))
+    w = Window((1200,900),title="test",resizable=True,ratio=(12,9))
+    m = Menu(w,(1200,800),style1(bgcolor=(10,30,50),bordercolor=(200,200,100),borderwidth=5,borderradius=50))
+    m.set_coordinates_relative(50,50)
+    mouse.center_up
+    widget = Widget((100,100),style1(bgcolor=(100,100,100),borderradius=100))
+    m.set_layout(Infinite_Scroll((1500,800)))
+    g = Grid((800,300),3,3)
+    g.border_name = "СЛАВА ПИТОНУ"
+    g.add_widget(Widget((100,100),style1(bgcolor=(100,100,100),borderradius=100)),1,1)
+    g.add_widget(Widget((100,100),style1(bgcolor=(100,100,100),borderradius=100)),1,2)
+    g.add_widget(Widget((100,100),style1(bgcolor=(100,100,100),borderradius=100)),2,1)
+    g.add_widget(Widget((100,100),style1(bgcolor=(100,100,100),borderradius=100)),2,2)
+    g.add_widget(Widget((100,100),style1(bgcolor=Color_Type.TRANSPARENT,bordercolor=Color_Type.TRANSPARENT,borderradius=100)),3,1)
+    g.add_widget(Button(lambda:print("test"),"нажми",(100,100),style1(bgcolor=(100,100,100),borderradius=100)),3,2)
+    g.borders = True
+    m.layout.add_widget(Widget((100,100),default_style(bgcolor=(100,0,0))))
+    m.layout.add_widget(g)
+    m.layout.add_widget(Label((1000,100),"SLAVA PITONU",default_style),Align.RIGHT)
+    m.layout.add_widget(Label((1000,100),"SLAVA PITONU",default_style),Align.RIGHT)
+    m.layout.add_widget(Label((1000,100),"SLAVA PITONU",default_style(bgcolor=(200,0,0))))
+    m.layout.add_widget(Label((1000,200),"СЛАВА РОССИИ 🙏❤️АНГЕЛА ХРАНИТЕЛЯ КАЖДОМУ ИЗ ВАС 🙏❤️БОЖЕ ХРАНИ РОССИЮ 🙏❤️СПАСИБО ВАМ НАШИ МАЛЬЧИКИ 🙏🏼❤️🇷🇺 ЧТО ПОДДЕРЖИВАЕТЕ НАШИХ МАЛЬЧИКОВ НА СВО❤️🇷🇺 СЛАВА РОССИИ 🙏❤️АНГЕЛА ХРАНИТЕЛЯ КАЖДОМУ",default_style))
+    m.layout.add_widget(Label((1000,100),"CLAVA VENOM🙏🖤 каждому из вас 🙏🖤 боже 🙏 храни🖤🙏venom БОЖЕ СПАСИБО🙏🖤ХРАНИ VENOM🙏🙏🙏🙏VENOM VENOM VENOM VENOM🙏🖤НАШСлаVа Богу VENOM🙏🖤 слаVA VENOM🙏🙏🙏🙏🙏🙏🙏🖤🖤🖤🖤",default_style),Align.CENTER)
+    m.layout.add_widget(Empty_Widget((0,300)))
+    m.layout.add_widget(Widget((100,100),default_style(bgcolor=(200,0,0))))
+    m.layout.add_widget(Label((200,100),"Senom vex",default_style),Align.CENTER)
+    m.layout.add_widget(Widget((100,100),default_style(bgcolor=Color_Type.Gradient((20,20,20),(200,200,200),Color_Type.Gradient.HORIZONTAL))))
+    m.layout.add_widget(Input((100,100),default_style),Align.CENTER)
+    m.layout.add_widget(Input((100,100),default_style),Align.CENTER)
+    m.layout.add_widget(GifWidget((100,100),g1,default_style,10),Align.CENTER)
+    m.layout.add_widget(MusicPlayer((300,100),m1,default_style(borderradius=10)),Align.CENTER)
+    m.layout.add_widget(MusicPlayer((300,100),m2,default_style(borderradius=10)),Align.CENTER)
+    g = Appending_Layout_H()
+    g.borders = True
+    g.add_widget(Button(None,"HAHAHA",(100,100),style=default_style))
+    g.add_widget(Button(None,"HAHAHA",(100,100),style=default_style))
+    g.add_widget(Button(None,"HAHAHA",(300,100),style=default_style))
+    m.layout.add_widget(g)
+    g = Appending_Layout_V()
+    g.borders = True
+    g.add_widget(Button(lambda:g.add_widget(Button(None,"HAHAHA",(100,100),style=default_style)),"HAHAHA",(100,100),style=default_style))
+    g.add_widget(Button(None,"HAHAHA",(100,100),style=default_style))
+    g.add_widget(Button(None,"HAHAHA",(300,100),style=default_style))
+    m.layout.add_widget(g)
+    while True:
+        events = pygame.event.get()
+        w.update(events,-900)
+        m.update()
+        m.draw()
+        
+        pygame.display.update()
+        #print((time.delta_time/100),time.fps)
